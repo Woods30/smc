@@ -1,65 +1,38 @@
----
-name: content-workflow-orchestrator
-description: 内容创作工作流编排器
----
+# Orchestrator — 内容创作工作流总入口
 
-# 内容创作工作流 - 编排器
+## 触发条件
 
-主入口技能，负责任务分解、流程调度、状态维护。
+当用户输入包含 `/article` 或 `/social` 时触发。
 
-## 启动方式
+## 分发逻辑
 
-用户输入 `/content-workflow` 或 `开始内容创作` 触发。
+检查用户意图：
+- `/article` → 调用 article/SKILL.md
+- `/social` → 调用 social/SKILL.md
 
-## 初始流程
+如果用户只说"写文章"但未指定类型，询问用户选择 article 还是 social。
 
-1. 检查 `.smc/` 目录是否存在
-2. 不存在 → 初始化项目结构
-3. 存在 → 读取 `state.json`，恢复上次进度
-4. 询问用户是否继续当前项目或开始新项目
+## 流程说明
 
-## 命令
+- `/article`: 完整长文章流程（研究→大纲→撰稿→编辑→验证→SEO→去AI味→格式→发布）
+- `/social`: 社交内容流程（研究→大纲→撰稿→去AI味→平台适配）
 
-| 命令 | 说明 |
-|------|------|
-| `开始新项目` | 初始化新项目 |
-| `继续` | 从当前步骤继续 |
-| `跳到 {步骤}` | 跳转到指定步骤 |
-| `状态` | 显示当前进度 |
-| `重置` | 重置项目 |
+## 状态初始化
 
-## 步骤列表
-
-1. research - 深度主题研究
-2. outline - 制作优化大纲
-3. draft - 撰稿协作
-4. edit - 编辑修改
-5. verify - 信息验证审核
-6. seo - SEO优化
-7. humanize - 去AI味
-8. format - 多格式适配
-9. platform - 平台适配
-
-## 执行流程
-
-```
-开始新项目?
-  → 询问项目名称和主题
-  → 初始化 .smc/ 结构
-  → 进入 research
-
-继续?
-  → 读取 state.json
-  → 进入 current_step
-
-跳到 {步骤}?
-  → 更新 current_step
-  → 执行该步骤及后续步骤
+创建项目状态文件 `.smc/state.json`：
+```json
+{
+  "type": null,
+  "currentStep": null,
+  "createdAt": "<timestamp>",
+  "updatedAt": "<timestamp>"
+}
 ```
 
-## 子技能调用
+## 第三方插件槽
 
-每个步骤调用对应 skill:
-- 使用 `invoke_skill` 调用子技能
-- 传递当前 state 和前序步骤的草稿
-- 子技能完成后更新状态
+通过 `config.json` 配置：
+- research: deep-research / tavily / firecrawl
+- humanize: stealthwriter / undetectableai
+
+读取配置并传递给对应技能。

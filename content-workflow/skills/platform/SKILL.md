@@ -1,64 +1,66 @@
----
-name: content-workflow-platform
-description: 平台适配 - 平台特定格式调整
----
+# Platform — 平台适配与发布
 
-# 平台适配
+## 触发条件
+
+被 article 或 social 工作流调用，作为最终环节。
 
 ## 输入
 
-- Markdown内容 (`08-format.md`)
-- 目标平台
+- `.smc/drafts/08-format.md`（格式化稿件，article）
+- `.smc/drafts/07-humanize.md`（social，直接来自 humanize）
+- 目标平台列表
 
 ## 支持平台
 
-| 平台 | 特点 |
-|------|------|
-| 微信公众号 | 标题格式、字数控制、排版 |
-| 知乎 | 问答适配、结构化 |
-| 微博/小红书 | 短内容、emoji |
-| 独立博客 | 完整内容、SEO |
+### 国内
+- 微信公众号：封面图建议、摘要（不含emoji）、字数控制
+- 微博：140字限制、话题标签、@提及
+- 小红书：emoji、hashtag、200-800字
+- 知乎：专业语气、引用格式
+- 抖音/快手：短文案、悬念式开头
 
-## 适配维度
+### 海外
+- Twitter/X：280字符、hashtag
+- LinkedIn：专业语气、CTA
+- Instagram：caption、hashtag墙
+- Facebook：长文案、emoji
+- Threads：短内容、互动引导
 
-### 1. 标题党适配（可选）
-- 吸引点击的标题
-- 副标题补充
+## 平台适配处理
 
-### 2. 字数控制
-- 长文/短文转换
-- 精华版/完整版
+1. 字数裁剪/扩展
+2. 标题党适配（适度）
+3. 表情符号处理
+4. hashtag 格式转换
+5. @提及和链接处理
 
-### 3. 平台特定格式
-- 平台配图建议
-- 标签格式
-- 互动引导
+## 输出
 
-## 输出结构
+每个平台单独输出文件：
+- `.smc/output/wechat-<slug>.md`
+- `.smc/output/twitter-<slug>.md`
+- `.smc/output/xiaohongshu-<slug>.md`
+- ...
 
-```markdown
-# 平台适配报告
+## 状态更新
 
-## 适配平台
-[平台名称]
-
-## 标题
-[优化后标题]
-
-## 字数
-- 原文字数: N
-- 适配后字数: N
-
-## 正文
-[平台适配后的内容]
-
-## 平台建议
-- 配图: [建议]
-- 标签: [列表]
-- 互动引导: [文本]
+更新 `.smc/state.json`：
+```json
+{
+  "currentStep": "platform",
+  "platform": {
+    "completedAt": "<timestamp>",
+    "outputs": ["wechat", "twitter", "xiaohongshu"]
+  }
+}
 ```
 
-## Context 控制
+## 标记完成
 
-- 适配报告存入 `09-platform.md`
-- 摘要存入 `state.json summaries.platform`
+当 platform 完成后，更新 state.json 标记整个工作流完成：
+```json
+{
+  "status": "completed",
+  "completedAt": "<timestamp>"
+}
+```

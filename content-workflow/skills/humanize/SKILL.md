@@ -1,74 +1,49 @@
----
-name: content-workflow-humanize
-description: 去AI味 - 检测和改写AI生成内容，使其更有人味
----
+# Humanize — 去AI味
 
-# 去AI味
+## 触发条件
+
+1. 被 article 工作流在 seo 之后调用（最终抛光）
+2. 被 social 工作流在 drafting 之后调用
+3. 配置决定使用内置还是第三方
 
 ## 输入
 
-- SEO优化后内容 (`06-seo.md`)
-- 人化程度（轻度/中度/重度）
+- `.smc/drafts/06-seo.md`（article）或 `.smc/drafts/03-draft.md`（social）
+- 配置（从 config.json 读取 humanize.provider）
 
-## AI味检测指标
+## 内置模式（默认 / stealthwriter）
 
-### 句式特征
-- 句式过于规整
-- 短句连续重复
-- 连接词过度使用 (因此、然而、此外)
+使用高级提示词工程进行去AI味改写：
+- 深度句式重构
+- 词汇多样化替换
+- 人类写作特征注入（犹豫、强调、不完美）
 
-### 词汇特征
-- 重复用词
-- 泛化表达 (非常、十分、相当)
-- 缺乏具体词汇
+### 改写原则
+1. 保持原意 100%
+2. 改变句式结构
+3. 替换高频AI词汇
+4. 增加人类写作痕迹
 
-### 结构特征
-- 完美的对称结构
-- 机械的过渡
-- 过于流畅/通顺
+## 第三方模式（provider: undetectableai）
 
-## 改写策略
+调用 UndetectableAI API 进行去AI味。
 
-### 轻度
-- 调整句式长度
-- 替换过度使用的词汇
-- 添加自然过渡
+## 输出
 
-### 中度
-- 重写AI感强的段落
-- 添加个人化表达
-- 引入具体案例
+保存到 `.smc/drafts/07-humanize.md`：
+- 去AI味后的完整稿件
 
-### 重度
-- 保留核心信息，完全重写表达
-- 注入个人风格
-- 添加情感元素
+## 状态更新
 
-## 输出结构
-
-```markdown
-# 去AI味报告
-
-## 检测结果
-- AI味得分: [0-100]
-- 主要问题:
-  - [问题1]
-  - [问题2]
-
-## 改写统计
-- 总改写处: N处
-- 句式调整: N处
-- 词汇替换: N处
-- 段落重写: N处
-
-## 改写后内容
-[去AI味后的内容]
-
-## 风格说明
-[说明本次人化处理的要点]
+更新 `.smc/state.json`：
+```json
+{
+  "currentStep": "humanize",
+  "humanize": {
+    "completedAt": "<timestamp>",
+    "provider": "<used provider>",
+    "wordCountBefore": <before>,
+    "wordCountAfter": <after>
+  }
+}
 ```
-
-## Context 控制
-
-- 改写报告存入 `07-humanize.md`
-- 摘要存入 `state.json summaries.humanize`

@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserMessage": [
+      {
+        "matcher": "/article|/social",
+        "hooks": [
+          {
+            "type": "skill",
+            "skill": "orchestrator"
+          }
+        ]
+      }
+    ]
+  }
+}

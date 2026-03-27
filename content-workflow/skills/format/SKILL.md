@@ -1,3 +1,8 @@
+---
+name: format
+description: 多格式适配技能 - Markdown 标准化输出
+---
+
 # Format — 多格式适配
 
 ## 触发条件

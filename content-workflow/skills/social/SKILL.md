@@ -1,3 +1,8 @@
+---
+name: social
+description: 社交内容创作流程编排 - 轻量流程：研究→大纲→撰稿→去AI味→平台适配
+---
+
 # Social Workflow — 社交内容创作流程编排
 
 ## 触发条件

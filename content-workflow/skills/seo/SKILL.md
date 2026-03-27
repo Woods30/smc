@@ -1,3 +1,8 @@
+---
+name: seo
+description: SEO优化技能 - 关键词布局、元信息优化
+---
+
 # SEO — SEO优化
 
 ## 触发条件

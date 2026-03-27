@@ -1,3 +1,8 @@
+---
+name: outline
+description: 制作优化大纲技能 - 为 article 和 social 生成结构化大纲
+---
+
 # Outline — 制作优化大纲
 
 ## 触发条件

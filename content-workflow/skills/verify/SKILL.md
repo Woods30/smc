@@ -1,3 +1,8 @@
+---
+name: verify
+description: 信息验证审核技能 - 事实核查、来源追溯
+---
+
 # Verify — 信息验证审核
 
 ## 触发条件

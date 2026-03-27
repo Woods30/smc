@@ -1,3 +1,8 @@
+---
+name: orchestrator
+description: 内容创作工作流总入口 - 当用户输入 /article 或 /social 时触发
+---
+
 # Orchestrator — 内容创作工作流总入口
 
 ## 触发条件

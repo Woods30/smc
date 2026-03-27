@@ -1,3 +1,8 @@
+---
+name: research
+description: 深度主题研究技能 - 支持 Deep Research、Tavily、Firecrawl 第三方插件槽
+---
+
 # Research — 深度主题研究
 
 ## 触发条件

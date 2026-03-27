@@ -1,3 +1,8 @@
+---
+name: platform
+description: 平台适配与发布技能 - 支持国内外多平台内容适配
+---
+
 # Platform — 平台适配与发布
 
 ## 触发条件

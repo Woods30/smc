@@ -1,3 +1,8 @@
+---
+name: drafting
+description: 撰稿协作技能 - 含嵌入式去AI味策略
+---
+
 # Drafting — 撰稿协作（含嵌入式去AI味）
 
 ## 触发条件

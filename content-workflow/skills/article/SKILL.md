@@ -1,3 +1,8 @@
+---
+name: article
+description: 长文章创作流程编排 - 完整流程：研究→大纲→撰稿→编辑→验证→SEO→去AI味→格式→发布
+---
+
 # Article Workflow — 长文章创作流程编排
 
 ## 触发条件

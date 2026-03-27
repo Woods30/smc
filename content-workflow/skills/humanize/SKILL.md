@@ -1,3 +1,8 @@
+---
+name: humanize
+description: 去AI味技能 - 支持 StealthWriter、UndetectableAI 第三方插件槽
+---
+
 # Humanize — 去AI味
 
 ## 触发条件

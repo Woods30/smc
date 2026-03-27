@@ -2,18 +2,44 @@
   "name": "content-workflow",
   "description": "内容创作工作流技能 - 从深度研究到平台适配的完整内容创作流程",
   "version": "1.0.0",
+  "entryPoints": [
+    {
+      "command": "/article",
+      "description": "开始长文章创作流程"
+    },
+    {
+      "command": "/social",
+      "description": "开始社交内容创作流程"
+    }
+  ],
+  "skills": [
+    "skills/orchestrator",
+    "skills/article",
+    "skills/social",
+    "skills/research",
+    "skills/outline",
+    "skills/drafting",
+    "skills/edit",
+    "skills/verify",
+    "skills/seo",
+    "skills/humanize",
+    "skills/format",
+    "skills/platform"
+  ],
   "author": {
     "name": "yoyo",
     "email": ""
   },
   "homepage": "",
-  "repository": "",
+  "repository": "git@github.com:Woods30/smc.git",
   "license": "MIT",
   "keywords": [
     "content",
     "workflow",
     "writing",
     "seo",
-    "humanization"
+    "humanization",
+    "article",
+    "social"
   ]
 }

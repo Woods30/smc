@@ -27,16 +27,16 @@ project/
 │   ├── state.json          # 统一状态（当前步骤、整体进度）
 │   ├── chunks/             # 分块存储
 │   │   └── manifest.json  # 分块索引
-│   └── drafts/             # 各步骤草稿
-│       ├── 01-research.json
-│       ├── 02-outline.json
-│       ├── 03-draft.json
-│       ├── 04-edit.json
-│       ├── 05-verify.json
-│       ├── 06-seo.json
-│       ├── 07-humanize.json
-│       ├── 08-format.json
-│       └── 09-platform.json
+│   └── drafts/             # 各步骤草稿（Markdown）
+│       ├── 01-research.md
+│       ├── 02-outline.md
+│       ├── 03-draft.md
+│       ├── 04-edit.md
+│       ├── 05-verify.md
+│       ├── 06-seo.md
+│       ├── 07-humanize.md
+│       ├── 08-format.md
+│       └── 09-platform.md
 ```
 
 ---

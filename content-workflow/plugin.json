@@ -1,0 +1,29 @@
+{
+  "name": "content-workflow",
+  "version": "1.0.0",
+  "description": "内容创作工作流 - 长文章和社交内容全流程",
+  "entryPoints": [
+    {
+      "command": "/article",
+      "description": "开始长文章创作流程"
+    },
+    {
+      "command": "/social",
+      "description": "开始社交内容创作流程"
+    }
+  ],
+  "skills": [
+    "skills/orchestrator",
+    "skills/article",
+    "skills/social",
+    "skills/research",
+    "skills/outline",
+    "skills/drafting",
+    "skills/edit",
+    "skills/verify",
+    "skills/seo",
+    "skills/humanize",
+    "skills/format",
+    "skills/platform"
+  ]
+}

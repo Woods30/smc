@@ -1,0 +1,15 @@
+{
+  "plugins": {
+    "research": {
+      "provider": "deep-research",
+      "apiKeyEnv": "DEEP_RESEARCH_API_KEY"
+    },
+    "humanize": {
+      "provider": "stealthwriter",
+      "apiKeyEnv": "STEALTHWRITER_API_KEY"
+    }
+  },
+  "storage": {
+    "basePath": ".smc"
+  }
+}

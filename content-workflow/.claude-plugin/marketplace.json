@@ -1,0 +1,20 @@
+{
+  "name": "content-workflow-dev",
+  "description": "Content Workflow Skills - Full content creation workflow from research to platform adaptation",
+  "owner": {
+    "name": "yoyo",
+    "email": ""
+  },
+  "plugins": [
+    {
+      "name": "content-workflow",
+      "description": "内容创作工作流技能 - 从深度研究到平台适配的完整内容创作流程",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "yoyo",
+        "email": ""
+      }
+    }
+  ]
+}

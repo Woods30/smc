@@ -1,54 +1,74 @@
----
-name: content-workflow-research
-description: 深度主题研究 - 使用Deep Research进行多源信息收集
----
+# Research — 深度主题研究
 
-# 深度主题研究
+## 触发条件
+
+被 article 或 social 工作流调用。article 必须触发。
 
 ## 输入
 
-- 项目主题/关键词
-- 研究目标（了解/对比/深度分析）
-- 参考资源（可选）
+- 主题（用户提供的文章/内容主题）
+- 配置（从 config.json 读取 research.provider）
 
-## 过程
+## 流程
 
-1. 使用 Deep Research 进行多源搜索
-2. 收集权威来源（学术、官方、专业媒体）
-3. 整理关键发现和数据点
-4. 生成信息来源列表
+### Deep Research 模式（默认 / deep-research）
 
-## 输出结构
+1. 使用官方 Deep Research 能力搜索主题相关资料
+2. 收集来源：网页、文章、数据源
+3. 提取关键发现、核心论点、支持数据
+4. 输出来源列表（URL + 摘要）
+
+### Tavily 模式（provider: tavily）
+
+1. 调用 Tavily API 搜索主题
+2. 聚合搜索结果
+3. 提取结构化信息
+
+### Firecrawl 模式（provider: firecrawl）
+
+1. 使用 Firecrawl 爬取相关网页
+2. 提取页面核心内容
+3. 去重和内容质量过滤
+
+## 输出
+
+保存到 `.smc/drafts/01-research.md`：
 
 ```markdown
 # 研究报告
 
-## 研究主题
-[主题名称]
-
-## 研究目标
-[目标描述]
+## 主题
+<用户主题>
 
 ## 关键发现
-1. [发现1]
-2. [发现2]
+- <发现1>
+- <发现2>
 ...
 
-## 数据支撑
-- [数据点1] - [来源]
-- [数据点2] - [来源]
+## 核心数据/统计
+- <数据1>
+- <数据2>
+...
 
 ## 信息来源
-1. [来源1](url) - 权威度: 高/中/低
-2. [来源2](url) - 权威度: 高/中/低
+1. <来源1> — <URL>
+2. <来源2> — <URL>
+...
 
-## 待深入问题
-- [问题1]
-- [问题2]
+## 研究时间
+<timestamp>
 ```
 
-## Context 控制
+## 状态更新
 
-- 完整报告存入 `01-research.md`
-- 摘要（≤200字）存入 `state.json summaries.research`
-- 大内容自动分块
+更新 `.smc/state.json`：
+```json
+{
+  "currentStep": "research",
+  "research": {
+    "completedAt": "<timestamp>",
+    "provider": "<used provider>",
+    "sourceCount": <number>
+  }
+}
+```
